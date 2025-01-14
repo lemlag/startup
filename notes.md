@@ -1,5 +1,7 @@
 # CS 260 Notes
 
+This assigment is proving difficult because github keeps giving me 500 errors
+
 [My startup - Simon](https://simon.cs260.click)
 
 ## Helpful links
