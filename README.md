@@ -22,7 +22,7 @@ For this deliverable I designed the central idea of the product, and made an exa
 
 Have you ever done a sudoku on any popular website and been annoyed by all of the computerized assistance you receive? My website will return you to the good old feeling of solving with a pencil on paper by not providing any automatic checks or logic assistance, letting you make mistakes and figure out connections without an unnecessary limitation on your puzzle-solving experience. Additionally, you can race against your friends and compete to be on the global leaderboard. This provides all of the challenge and competitiveness of this puzzle game in one easy-to-access place.
 
-<!-- ### Design
+### Design
 
 ![Puzzle Design](PuzzlePageDesign.png)
 
@@ -30,7 +30,7 @@ This is the main screen that shows the game window with the current time spent o
 
 ![Leaderboard Design](LeaderboardDesign.png)
 
-This picture shows the leaderboard concept design, with space for a user's ranking, username, and the time it took them to complete the day's puzzle. -->
+This picture shows the leaderboard concept design, with space for a user's ranking, username, and the time it took them to complete the day's puzzle.
 
 <!-- Below is a sequence diagram showing how the users will interact with the backend to have an up-to-date leaderboard. -->
 
