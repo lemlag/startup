@@ -16,3 +16,8 @@ One of the ideas listed was to make a simple game, so I chose sudoku because I d
 > To do list for the website:
 >- Determine how sudokus are generated
 >- Look into color schemes that work for the website
+
+
+## Project Checklist:
+- Specification deliverable readme - Done!
+- Website design mockups - Done!
