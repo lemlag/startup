@@ -47,7 +47,7 @@ sequenceDiagram
     Website-->>Bob: Update leaderboard
 ``` 
 
-<!-- ### Key features
+### Key features
 
 - Secure login over HTTPS
 - Randomized game of Sudoku every day (same for all users)
@@ -55,7 +55,7 @@ sequenceDiagram
 - Submit tells you if you have solved the puzzle or not
 - Different colors for puzzle's numbers and user's number input
 - Leaderboard persistently stored, but updated every day
-- Header displays accurate timer and puzzle number, to keep track of which puzzle is which -->
+- Header displays accurate timer and puzzle number, to keep track of which puzzle is which
 
 <!-- ### Technologies
 
