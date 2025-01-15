@@ -1,7 +1,5 @@
 # Sudoku Central
 
-[My Notes](notes.md)
-
 Sudoku Central is an online platform for enjoying a daily randomized game of sudoku, and allows users to see the rankings for the current days' game of sudoku. This will be an easy game of Sudoku
 
 
@@ -149,3 +147,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
 - [ ] **Application is fully functional** - I did not complete this part of the deliverable. -->
+
+## Notes:
+[My Notes](notes.md)
+
