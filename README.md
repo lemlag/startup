@@ -1,70 +1,86 @@
-# Your startup name here
+# Sudoku Central
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Sudoku Central is an online platform for enjoying a daily randomized game of sudoku, and allows users to see the rankings for the current days' game of sudoku. This will be an easy game of Sudoku
 
 
-> [!NOTE]
->  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
+<!-- > [!NOTE]
+>  You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item. -->
 
-> [!NOTE]
->  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
+<!-- ## 🚀 Specification Deliverable
 
-## 🚀 Specification Deliverable
+For this deliverable I designed the central idea of the product, and made an example template of what the final product should look like. I checked the box `[x]` and added a description for things I completed.
 
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
-For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
-
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown - I edited the provided markdown document and made it look presentable, including commenting out the portions that are not applicable yet
+- [x] A concise and compelling elevator pitch - done in one moderate-sized paragraph
+- [x] Description of key features - summary of currently-planned features (mainly gameplay related) that would appeal to sudoku lovers
+- [x] Description of how you will use each technology - summarized the purpose of each technology in the final webpage design of the sudoku project
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. - Done - two images designed by me for two of the pages of the website
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Have you ever done a sudoku on any popular website and been annoyed by all of the computerized assistance you receive? My website will return you to the good old feeling of solving with a pencil on paper by not providing any automatic checks or logic assistance, letting you make mistakes and figure out connections without an unnecessary limitation on your puzzle-solving experience. Additionally, you can race against your friends and compete to be on the global leaderboard. This provides all of the challenge and competitiveness of this puzzle game in one easy-to-access place.
 
 ### Design
 
-![Design image](placeholder.png)
+![Puzzle Design](PuzzlePageDesign.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This is the main screen that shows the game window with the current time spent on the puzzle.
+
+![Leaderboard Design](LeaderboardDesign.png)
+
+This picture shows the leaderboard concept design, with space for a user's ranking, username, and the time it took them to complete the day's puzzle.
+
+Below is a sequence diagram showing how the users will interact with the backend to have an up-to-date leaderboard.
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor Alice
+    actor Bob
     actor Website
-    You->>Website: Replace this with your design
+    Alice->>Website: Submit puzzle
+    Website-->>Bob: Update leaderboard
+    Website-->>Alice: Update leaderboard
+    Bob->>Website: Submit puzzle
+    Website-->>Alice: Update leaderboard
+    Website-->>Bob: Update leaderboard
 ```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Randomized game of Sudoku every day (same for all users)
+- Competitive leaderboard display
+- Submit tells you if you have solved the puzzle or not
+- Different colors for puzzle's numbers and user's number input
+- Leaderboard persistently stored, but updated every day
+- Header displays accurate timer and puzzle number, to keep track of which puzzle is which
 
 ### Technologies
 
-I am going to use the required technologies in the following ways.
+I am going to use the required technologies in the following ways:
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Provides the basic structure for the website, including hyperlinks between the three pages. Will have three HTML pages, one for login, one for gameplay, and one for the leaderboard, with hyperlinks between them.
+- **CSS** - Styles the application so that it centers the game regardless of screen size, and displays textual information in appealing colors and fonts to the user.
+- **React** - Forms the basis of the user login, game display, and leaderboard display so that the user can interact with the various elements and receive updates on the leaderboard in real time.
+- **Service** - Establishes the backend service with endpoints for:
+    -   Login
+    -   Retrieving the daily puzzle
+    -   Verifying if the sudoku puzzle is correct
+    -   Retrieving leaderboard information
+- **DB/Login** - Stores user information, along with leaderboard information and both the initial state and solved state of the day's puzzle in the database. Will register and login users, and store credentials securely. The user cannot see the day's puzzle until logged in.
+- **WebSocket** - As each user completes the sudoku, the updated leaderboard information is broadcast to all other users on the leaderboard page. -->
 
-## 🚀 AWS deliverable
+<!-- Below is the template code for the deliverables I have not completed yet. It is there for future use. -->
+
+<!-- ## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click). -->
 
-## 🚀 HTML deliverable
+<!-- ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
@@ -76,9 +92,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Images** - I did not complete this part of the deliverable.
 - [ ] **Login placeholder** - I did not complete this part of the deliverable.
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable. -->
 
-## 🚀 CSS deliverable
+<!-- ## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
@@ -132,4 +148,4 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
 - [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [ ] **Application is fully functional** - I did not complete this part of the deliverable. -->
