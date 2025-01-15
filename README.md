@@ -32,19 +32,19 @@ This is the main screen that shows the game window with the current time spent o
 
 This picture shows the leaderboard concept design, with space for a user's ranking, username, and the time it took them to complete the day's puzzle.
 
-<!-- Below is a sequence diagram showing how the users will interact with the backend to have an up-to-date leaderboard. -->
+Below is a sequence diagram showing how the users will interact with the backend to have an up-to-date leaderboard.
 
  ```mermaid
-%% sequenceDiagram
-%%     actor Alice
-%%     actor Bob
-%%     actor Website
-%%     Alice->>Website: Submit puzzle
-%%     Website-->>Bob: Update leaderboard
-%%     Website-->>Alice: Update leaderboard
-%%     Bob->>Website: Submit puzzle
-%%     Website-->>Alice: Update leaderboard
-%%     Website-->>Bob: Update leaderboard
+sequenceDiagram
+    actor Alice
+    actor Bob
+    actor Website
+    Alice->>Website: Submit puzzle
+    Website-->>Bob: Update leaderboard
+    Website-->>Alice: Update leaderboard
+    Bob->>Website: Submit puzzle
+    Website-->>Alice: Update leaderboard
+    Website-->>Bob: Update leaderboard
 ``` 
 
 <!-- ### Key features
