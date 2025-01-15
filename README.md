@@ -57,7 +57,7 @@ sequenceDiagram
 - Leaderboard persistently stored, but updated every day
 - Header displays accurate timer and puzzle number, to keep track of which puzzle is which
 
-<!-- ### Technologies
+### Technologies
 
 I am going to use the required technologies in the following ways:
 
@@ -70,7 +70,7 @@ I am going to use the required technologies in the following ways:
     -   Verifying if the sudoku puzzle is correct
     -   Retrieving leaderboard information
 - **DB/Login** - Stores user information, along with leaderboard information and both the initial state and solved state of the day's puzzle in the database. Will register and login users, and store credentials securely. The user cannot see the day's puzzle until logged in.
-- **WebSocket** - As each user completes the sudoku, the updated leaderboard information is broadcast to all other users on the leaderboard page. -->
+- **WebSocket** - As each user completes the sudoku, the updated leaderboard information is broadcast to all other users on the leaderboard page.
 
 <!-- Below is the template code for the deliverables I have not completed yet. It is there for future use. -->
 
