@@ -39,3 +39,7 @@ whois domainname - info about the domain name
 ## DNS server
 My domain name: http://sudokucentral.click
 Any subdomain works with it, for example http://help.sudokucentral.click
+
+## Caddy
+Caddy automatically communicates with Let's Encrypt so, when it is configured right, gets a certificate from it to verify authenticity
+Also works for https://simon.sudokucentral.click and https://startup.sudokucentral.click
