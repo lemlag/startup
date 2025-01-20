@@ -35,3 +35,7 @@ My aws instance: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-eas
 dig command - info maps domain name to the ip address
 Subdomain.secondary.topleveldomain
 whois domainname - info about the domain name
+
+## DNS server
+My domain name: http://sudokucentral.click
+Any subdomain works with it, for example http://help.sudokucentral.click
