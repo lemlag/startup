@@ -48,3 +48,6 @@ Also works for https://simon.sudokucentral.click and https://startup.sudokucentr
 Tags are the elements that are used for structure in HTML to delineate elements. There are many different ways to use them, and many different levels.
 ### Attributes
 Elements can have different attributes. For example, the img element has width and height attributes, along with src and alt.
+### Simon
+deployFiles.sh provides a method to delete previous instances and deploy the current instance of the code onto the web server
+The links help the page navigate well.
