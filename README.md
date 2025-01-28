@@ -67,30 +67,30 @@ I am going to use the required technologies in the following ways:
     -   Retrieving the daily puzzle
     -   Verifying if the sudoku puzzle is correct
     -   Retrieving leaderboard information
-- **DB/Login** - Stores user information, along with leaderboard information and both the initial state and solved state of the day's puzzle in the database. Will register and login users, and store credentials securely. The user cannot see the day's puzzle until logged in.
+- **DB/Login** - Stores user information, along with leaderboard information and both the initial state and solved state of the day's puzzle in the database. Will register and login users, and store credentials securely. The user cannot save their high score unless logged in.
 - **WebSocket** - As each user completes the sudoku, the updated leaderboard information is broadcast to all other users on the leaderboard page.
 
 <!-- Below is the template code for the deliverables I have not completed yet. It is there for future use. -->
 
-<!-- ## 🚀 AWS deliverable
+## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click). -->
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://sudokucentral.click/). - The root displays the desired image and all subdomains work.
 
-<!-- ## 🚀 HTML deliverable
+## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable. -->
+- [x] **HTML pages** - I created 3 pages that are all linked together, with space for every component of my application.
+- [x] **Proper HTML element usage** - I used appropriate HTML elements, including those 5 in each HTML document. I also used aside.
+- [x] **Links** - Each page links to the others, with the link to itself disabled.
+- [x] **Text** - All textual content and input is represented.
+- [x] **3rd party API placeholder** - I will be using a 3rd party service to help me generate new sudoku games, and I made a placeholder for the input and display of these games in index.html (the number array is a sudoku game).
+- [ ] **Images** - I have a picture of a lock on the login page.
+- [x] **Login placeholder** - I made a login page for the user to include their username and password
+- [x] **DB data placeholder** - I made an html page for the puzzle, which relies on the database's solved puzzle to check the player's score accurately and its unsolved puzzle to give the users when they first go to the page. Also, leaderboard information will be stored in the database, and that has its own page.
+- [x] **WebSocket placeholder** - I made an html page for the leaderboard scores, which updates automatically when users press the submit button on their puzzle.
 
 <!-- ## 🚀 CSS deliverable
 
