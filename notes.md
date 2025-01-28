@@ -56,3 +56,5 @@ There need to be probably 3 files - signup, home with sudoku, and leaderboard.
 Home - index.html
 Leaderboard - scores.html
 Signup - signup.html
+The sudoku puzzle itself is created by having 81 number input boxes - will I have to change this or can I style the input boxes?
+How do I add vertical lines? I can add horizontal lines with <hr /> and linebreaks with <br />
