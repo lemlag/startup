@@ -51,3 +51,8 @@ Elements can have different attributes. For example, the img element has width a
 ### Simon
 deployFiles.sh provides a method to delete previous instances and deploy the current instance of the code onto the web server
 The links help the page navigate well.
+### Own product design
+There need to be probably 3 files - signup, home with sudoku, and leaderboard.
+Home - index.html
+Leaderboard - scores.html
+Signup - signup.html
