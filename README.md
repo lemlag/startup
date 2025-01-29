@@ -86,8 +86,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - I used appropriate HTML elements, including those 5 in each HTML document. I also used aside.
 - [x] **Links** - Each page links to the others, with the link to itself disabled.
 - [x] **Text** - All textual content and input is represented.
-- [x] **3rd party API placeholder** - I will be using a 3rd party service to help me generate new sudoku games, and I made a placeholder for the input and display of these games in index.html (the number array is a sudoku game).
-- [ ] **Images** - I have a picture of a lock on the login page.
+- [x] **3rd party API placeholder** - I will be using a 3rd party service to help me generate new sudoku games, and I made a placeholder for the input and display of these games in index.html (the array of number inputs is a sudoku game). The service is https://sudoku-api.vercel.app/.
+- [x] **Images** - I put a picture of a lock on the login page.
 - [x] **Login placeholder** - I made a login page for the user to include their username and password
 - [x] **DB data placeholder** - I made an html page for the puzzle, which relies on the database's solved puzzle to check the player's score accurately and its unsolved puzzle to give the users when they first go to the page. Also, leaderboard information will be stored in the database, and that has its own page.
 - [x] **WebSocket placeholder** - I made an html page for the leaderboard scores, which updates automatically when users press the submit button on their puzzle.
