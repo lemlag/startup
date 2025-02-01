@@ -43,6 +43,9 @@ Any subdomain works with it, for example http://help.sudokucentral.click
 Caddy automatically communicates with Let's Encrypt so, when it is configured right, gets a certificate from it to verify authenticity
 Also works for https://simon.sudokucentral.click and https://startup.sudokucentral.click
 
+### How to add encryption on Caddy:
+edit the caddyfile and restart the caddy server
+
 ## HTML
 ### Tags
 Tags are the elements that are used for structure in HTML to delineate elements. There are many different ways to use them, and many different levels.
@@ -58,3 +61,21 @@ Leaderboard - scores.html
 Signup - signup.html
 The sudoku puzzle itself is created by having 81 number input boxes - will I have to change this or can I style the input boxes?
 How do I add vertical lines? I can add horizontal lines with <hr /> and linebreaks with <br />
+
+## CSS
+Cascading Stylesheets uses selectors and declarations. It is formatted as 
+> selector {
+>   declaration: value;    
+>}
+where selector corresponds to a group of elements and declarations corresponds to a property that can be changed about them. For example, text color, padding, or text-alignment.
+
+CSS can also be used to animate portions of the website using keyframes.
+
+### Simon CSS 
+- Most CSS files are relatively short, but they add a significant margin to the html code
+- Add links to the css file with     <link rel="stylesheet" href="main.css" />
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+- use the previous with a link to include bootstrap
