@@ -1,10 +1,4 @@
-section {
-    flex-grow: 1;
-    margin-right: auto;
-    margin-left: auto - 20px;
-    padding: 1px 16px;
-    justify-content: center;
-  }
+
 
   .centered {
     margin-left: auto;

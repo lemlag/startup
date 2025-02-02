@@ -38,7 +38,7 @@
     list-style: none;
   }
   
-  /* section {
+  section {
     flex-grow: 1;
     margin-right: auto;
     margin-left: auto - 20px;
@@ -46,7 +46,7 @@
     justify-content: center;
   }
 
-  .centered {
+  /*.centered {
     margin-left: auto;
     margin-right: auto;
   }
