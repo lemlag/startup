@@ -36,8 +36,14 @@
   }
   
   section .puzzle {
-    margin-right: 20px;
+    margin-right: auto;
+    margin-left: auto;
     padding: 1px 16px;
+  }
+
+  .centered {
+    margin-left: auto;
+    margin-right: auto;
   }
   
   @media (max-height: 600px) {
