@@ -57,6 +57,13 @@
     padding: 1px 16px;
     justify-content: center;
   }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+
   
   @media (max-height: 600px) {
     header {
