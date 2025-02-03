@@ -17,7 +17,8 @@
   }
   
   footer {
-    flex: 0 30px;
+    flex: 0 80px;
+    text-align: center;
   }
   
   main {
@@ -45,7 +46,7 @@
   }
 
   li {
-    padding: 10px;
+    width: 200px;
     border: 2px solid black;
     background-color: rgb(42, 64, 137);
   }
@@ -53,14 +54,32 @@
   section {
     flex-grow: 1;
     margin-right: auto;
-    margin-left: auto - 20px;
+    margin-left: auto;
     padding: 1px 16px;
     justify-content: center;
   }
 
-  a {
+  .centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  menu a {
+    width: 200px;
+    padding-left: 10px;
+    padding-right: 50px;
     color: white;
     text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  menu li:hover{
+    background-color: azure;
+    color: black;
+  }
+
+  menu a:hover{
+    color: black;
   }
 
 
