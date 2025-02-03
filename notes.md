@@ -83,3 +83,6 @@ CSS can also be used to animate portions of the website using keyframes.
 ### CSS for sudoku
 - It is really hard to do a right-side navbar. I made it so it should go to the bottom in case of small mobile screens. Not sure it will work though.
 - Tables have to be centered individually
+- CSS is very useful - but flex sometimes makes it so you cannot get your content centered. You should figure out a way around that
+- Color schemes are complicated - you can use online tools like the one at canva to help you pick good color schemes
+- To expand the reach of a link, expand the padding of the associated element and it will still link when you press on it.

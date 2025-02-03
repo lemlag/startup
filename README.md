@@ -92,18 +92,18 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **DB data placeholder** - I made an html page for the puzzle, which relies on the database's solved puzzle to check the player's score accurately and its unsolved puzzle to give the users when they first go to the page. Also, leaderboard information will be stored in the database, and that has its own page.
 - [x] **WebSocket placeholder** - I made an html page for the leaderboard scores, which updates automatically when users press the submit button on their puzzle.
 
-<!-- ## 🚀 CSS deliverable
+## 🚀 CSS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - The header, footer, and main content have been heavily styled including font changes, background changes, and individual element changes
+- [x] **Navigation elements** - Most of my work was focused on the navigation elements. They are on the right hand side of every page and change color when hovered over.
+- [x] **Responsive to window resizing** - When the window resizes, the whitespace of the puzzle aspect of the page shrinks and grows with the window. When it is too small, the navigation pane shifts to underneath the main content. When the screen is too short, the header and footer disappear.
+- [x] **Application elements** - Every box in the puzzle was resized with css and borders and edges were added to make it look like a proper sudoku game.
+- [x] **Application text content** - I changed the application fonts and changed their coloring based on their backgrounds. I also changed their positioning on the page.
+- [x] **Application images** - I added a border to my image and used CSS to control the height of the image.
 
-## 🚀 React part 1: Routing deliverable
+<!-- ## 🚀 React part 1: Routing deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
