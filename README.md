@@ -101,7 +101,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Responsive to window resizing** - When the window resizes, the whitespace of the puzzle aspect of the page shrinks and grows with the window. When it is too small, the navigation pane shifts to underneath the main content. When the screen is too short, the header and footer disappear.
 - [x] **Application elements** - Every box in the puzzle was resized with css and borders and edges were added to make it look like a proper sudoku game.
 - [x] **Application text content** - I changed the application fonts and changed their coloring based on their backgrounds. I also changed their positioning on the page.
-- [x] **Application images** - I added a border to my image and used CSS to control the height of the image.
+- [x] **Application images** - I added a border to my image, rounded it, and used CSS to control the height and width of the image.
 
 <!-- ## 🚀 React part 1: Routing deliverable
 
