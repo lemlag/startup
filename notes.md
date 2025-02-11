@@ -86,3 +86,25 @@ CSS can also be used to animate portions of the website using keyframes.
 - CSS is very useful - but flex sometimes makes it so you cannot get your content centered. You should figure out a way around that
 - Color schemes are complicated - you can use online tools like the one at canva to help you pick good color schemes
 - To expand the reach of a link, expand the padding of the associated element and it will still link when you press on it.
+
+
+## Javascript
+### Node.js
+- to run node on a file, type node filename.js
+- interpretive mode - node
+- one line - node -e
+npm to do node package manager
+- to initialize with defaults, do 
+npm init -y
+
+  run index.js inside of html with this tag
+  <script src="index.js"></script>
+
+  to get your files to auto-reload
+  node --watch main.js
+
+  to exit vscode debugging: shift F5
+  start debugging: F5
+  Step: F10
+  Step into function: F11
+  Continue: F5
