@@ -108,3 +108,8 @@ npm init -y
   Step: F10
   Step into function: F11
   Continue: F5
+
+### React
+- Made up of components. Javascript can change at runtime to make it look like multiple webpages are being run, when in reality the javascript just changes what it shows - fewer back-and-forth server traffic requests.
+
+- Represents html stuff - CSS still has to go in a stylesheet.
