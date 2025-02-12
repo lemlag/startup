@@ -1,8 +1,6 @@
- html {
-    font-family: sans-serif;
- }
- 
  .body {
+    font-family: sans-serif;
+
     display: flex;
     flex-direction: column;
     margin: 0;
