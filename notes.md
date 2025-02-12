@@ -113,3 +113,7 @@ npm init -y
 - Made up of components. Javascript can change at runtime to make it look like multiple webpages are being run, when in reality the javascript just changes what it shows - fewer back-and-forth server traffic requests.
 
 - Represents html stuff - CSS still has to go in a stylesheet.
+
+- Make different jsx file for each view component (webpage)
+- Centralize the universal elements (navbar, etc) in the app.jsx
+- Make a router by using the BrowserRouter component to contain the navigation items
