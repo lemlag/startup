@@ -9,17 +9,19 @@ import { Scores } from './scores/scores';
 export default function App() {
   return (
   <BrowserRouter>
-  <div className="body bg-dark text-light">
-    <header>
-      <h1>Sudoku Central</h1>
-    </header>
+    <div>
+      <header>
+        <h1>Sudoku Central</h1>
+      </header>
+    <div className="content">
 
-  <Routes>
-    <Route path='/login' element={<Login />} exact />
-    <Route path='/' element={<Play />} />
-    <Route path='/scores' element={<Scores />} />
-    <Route path='*' element={<NotFound />} />
-  </Routes>
+
+    <Routes>
+      <Route path='/login' element={<Login />} exact />
+      <Route path='/' element={<Play />} />
+      <Route path='/scores' element={<Scores />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
 
 
     <aside>
@@ -33,7 +35,7 @@ export default function App() {
         </nav>
     </aside>
 
-
+    </div>
 
     <footer>
       <hr />

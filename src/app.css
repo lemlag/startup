@@ -12,19 +12,22 @@
     text-align:center;
     background-color: rgb(42, 64, 137);
     color: white;
+    font-family: sans-serif;
   }
   
   footer {
     flex: 0 130px;
     text-align: center;
+    font-family: sans-serif;
   }
   
-  main {
+  .content {
     flex: 1;
     display: flex;
     flex-direction: row;
     text-align: center;
     justify-content: center;
+    font-family: sans-serif;
   }
 
   aside {
