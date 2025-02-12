@@ -1,5 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
@@ -21,10 +21,7 @@ export default function App() {
     <Route path='*' element={<NotFound />} />
   </Routes>
 
-    {/* <main> 
-      <div>App components go here </div>
 
-          {/* -- Navigation elements -- */}
     <aside>
         <nav>
           <menu>
@@ -35,7 +32,6 @@ export default function App() {
           </menu>
         </nav>
     </aside>
-    {/* </main> */}
 
 
 
