@@ -6,10 +6,6 @@ section img {
     height: 150px;
 }
 
-div {
-    padding: 5px;
-}
-
 button {
     border-radius: 10%;
     background-color: rgb(42, 64, 137);
