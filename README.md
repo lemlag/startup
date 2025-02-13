@@ -103,15 +103,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Application text content** - I changed the application fonts and changed their coloring based on their backgrounds. I also changed their positioning on the page.
 - [x] **Application images** - I added a border to my image, rounded it, and used CSS to control the height and width of the image.
 
-<!-- ## 🚀 React part 1: Routing deliverable
+ ## 🚀 React part 1: Routing deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
+- [x] **Bundled using Vite** - This part of the projecgt is bundled using Vite, which also let me debug my changes quickly and easily.
+- [x] **Components** - I converted all of the previous html, that was multiple pages, into react components to make a single page application.
+- [x] **Router** - There is routing between all of the components that works to switch between the viewed components.
 
-## 🚀 React part 2: Reactivity
+<!-- ## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
