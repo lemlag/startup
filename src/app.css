@@ -129,9 +129,13 @@
     }
   }
 
-  @media (max-width: 600px) {
-    main {
+  @media (max-width: 900px) {
+    .content {
       flex-direction: column;
+    }
+
+    #whitespace{
+      display: None;
     }
 
    #home, #score, #login {
@@ -142,7 +146,7 @@
       padding: auto;
     }
 
-    menu NavLink {
+    menu{
       text-align: center;
     }
 
@@ -152,6 +156,7 @@
 
     aside {
       text-align: center;
+      margin: 0;
     }
     
   }
