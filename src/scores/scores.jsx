@@ -5,11 +5,11 @@ export function Scores() {
   return (
     <main>
       <section className="Leaderboard">
-        <table className="centered">
+        <table className="centered leader">
           <thead>
             <tr>
               <th className="rank">Rank</th>
-              <th>Username</th>
+              <th className="username">Username</th>
               <th>Time</th>
             </tr>
           </thead>

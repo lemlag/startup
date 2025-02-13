@@ -9,12 +9,13 @@ import { Scores } from './scores/scores';
 export default function App() {
   return (
   <BrowserRouter>
-  <div>
-    <div>
+  <div className = "body">
       <header>
         <h1>Sudoku Central</h1>
       </header>
     <div className="content">
+
+      <aside id='whitespace'></aside>
 
 
     <Routes>
@@ -31,7 +32,7 @@ export default function App() {
             <li><NavLink id="home" to="">Home</NavLink></li>
             <li><NavLink id="score" to="scores">Scores</NavLink></li>
             <li><NavLink id="login" to="login">Log In/Sign Up</NavLink></li>
-            <li>User: Username</li>
+            <li id='user'>User: Username</li>
           </menu>
         </nav>
     </aside>
@@ -45,7 +46,6 @@ export default function App() {
       <NavLink to="https://github.com/lemlag/startup">GitHub</NavLink>
     </footer>
 
-  </div>;
   </div>;
   </BrowserRouter>
   );

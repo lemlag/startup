@@ -6,3 +6,11 @@
     border: 1px solid black;
     padding: 20px;
   }
+
+  table.leader {
+    width: 400px;
+  }
+
+  .username {
+    width:180px;
+  }

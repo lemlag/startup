@@ -1,10 +1,10 @@
- .body {
+   .body {
     font-family: sans-serif;
 
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin: 0px;
+    margin: -8px;
   }
 
   h1 {
@@ -20,11 +20,11 @@
     background-color: rgb(42, 64, 137);
     color: white;
     font-family: sans-serif;
-    /* width: 100vh; */
   }
   
   footer {
-    flex: 0 130px;
+    flex-grow: 0;
+    flex-basis: 130px;
     text-align: center;
     font-family: sans-serif;
   }
@@ -40,19 +40,24 @@
   }
 
   aside {
-    flex-basis: 200px;
+    flex-basis: 220px;
     flex-grow: 0;
     text-align: left;
+    margin-left: auto;
     overflow: auto;
     background-color: rgb(42, 64, 137);
     color: white;
+  }
+
+  #whitespace {
+    background-color: white;
   }
 
   menu {
     list-style: none;
     border-collapse: collapse;
     padding-left: 10px;
-    padding-right: 60px;
+    padding-right: 20px;
     color: white;
     text-decoration: none;
     box-sizing: border-box;
@@ -86,8 +91,13 @@
     color: black;
   }
 
+  #user:hover{
+    background-color:rgb(42, 64, 137);
+    color: white;
+  }
+
   #home, #score {
-    padding-right: 140px;
+    padding-right: 100px;
     text-decoration: none;
     color:white;
   }
@@ -101,6 +111,10 @@
   #home:hover, #score:hover, #login:hover{
     color: black;
     background-color: white;
+  }
+
+  hr {
+    margin-top: 0;
   }
   
   @media (max-height: 600px) {
