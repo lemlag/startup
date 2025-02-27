@@ -6,18 +6,23 @@ export function Unauthenticated(props) {
   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+      let user = localStorage.getItem(userName);
+      if (!user || user !== password) {
+        alert('Invalid username or password');
+        return;
+      }
+      localStorage.setItem('userName', userName);
+      props.onLogin(userName);
   }
 
   async function createUser() {
     localStorage.setItem('userName', userName);
-    localStorage.setItem('password', password);
+    localStorage.setItem(userName, password);
     props.onLogin(userName);
   }
 
   return (
-    <section class="signup">
+    <section className="signup">
       <img id="lock" src="./Lock.jpg" alt="Lock icon"/>
       <div>
         <span>
@@ -40,7 +45,6 @@ export function Unauthenticated(props) {
         </button>
       </div>
       
-      {/* <MessageDialog message={displayError} onHide={() => setDisplayError(null)} /> */}
     </section>
   );
 }

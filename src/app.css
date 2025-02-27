@@ -109,6 +109,12 @@
     color: white;
   }
 
+  #logout {
+    padding-right: 80px;
+    text-decoration: none;
+    color: white;
+  }
+
   #home:hover, #score:hover, #login:hover{
     color: black;
     background-color: white;
@@ -139,7 +145,7 @@
       display: None;
     }
 
-   #home, #score, #login {
+   #home, #score, #login, #logout {
       padding: 0;
     }
   

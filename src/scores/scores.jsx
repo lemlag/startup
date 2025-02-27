@@ -14,12 +14,12 @@ export function Scores() {
 
   const scoreRows = [];
   if(scores.length) {
-    for (const [i, score] of scores.slice(0,20).entries()) {
+    for (const [i, score] of scores.slice(0,10).entries()) {
       scoreRows.push(
         <tr key={i}>
           <td>{i}</td>
           <td>{score.name.split('@')[0]}</td>
-          <td>{score.time}</td>
+          <td>{score.formatted}</td>
         </tr>
       );
     }

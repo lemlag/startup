@@ -7,14 +7,14 @@ import './play.css';
 
 export function Gameboard(props) {
   const userName = props.userName;
-  const [sudoku, setSudoku] = React.useState([[0,0,0,2,0,7,1,3,0],
-    [5,4,0,0,6,0,0,8,0],
-    [0,1,0,9,0,0,0,5,2],
-    [9,5,0,0,8,2,0,0,6],
-    [0,0,6,0,0,0,7,0,0],
-    [3,0,0,5,9,0,0,4,8],
-    [8,2,0,0,0,4,0,7,0],
-    [0,3,0,0,2,0,0,6,9],
+  const [sudoku, setSudoku] = React.useState([[6,9,8,2,5,7,1,3,4],
+    [5,4,2,3,6,1,9,8,7],
+    [7,1,3,9,4,8,6,5,2],
+    [9,5,4,7,8,2,3,1,6],
+    [2,8,6,4,1,3,7,9,5],
+    [3,7,1,5,9,6,2,4,8],
+    [8,2,9,6,3,4,5,7,1],
+    [1,3,7,8,2,5,4,6,9],
     [0,6,5,1,0,9,0,0,0]]);
 
   const [readOnly, setReadOnly] = React.useState([]);
@@ -110,9 +110,8 @@ export function Gameboard(props) {
     );
   }
 
-  async function saveScore(score, time) {
-    const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, time: formatTime(time) };
+  async function saveScore(time) {
+    const newScore = { name: userName, time: time, formatted: formatTime(time) }; 
     // Let other players know the game has concluded
     GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
 
@@ -130,7 +129,7 @@ export function Gameboard(props) {
 
   let found = false;
   for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score < prevScore.score) {
+    if (newScore.time < prevScore.time) {
       scores.splice(i, 0, newScore);
       found = true;
       break;
@@ -141,8 +140,8 @@ export function Gameboard(props) {
     scores.push(newScore);
   }
 
-  if (scores.length > 20) {
-    scores.length = 20;
+  if (scores.length > 10) {
+    scores.length = 10;
   }
 
   localStorage.setItem('scores', JSON.stringify(scores));
@@ -155,11 +154,19 @@ const onSubmit = () => {
     for (let j = 0; j < sudoku[i].length; j++) {
       if (sudoku[i][j] === sudSolution[i][j]) {
         score += 1;
+      } else{
+        if (sudoku[i][j] - sudSolution[i][j] === 0) {
+          score += 1;
+        }
       }
     }
   }
-  saveScore(score, timer);
-  alert(`Your score is ${score}`);
+  if (score === 81) {
+  saveScore(timer);
+  }
+  else {
+    alert("Incorrect Solution" + " " + score + " " + "cells are correct");
+  }
 };
 
 
