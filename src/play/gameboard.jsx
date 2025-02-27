@@ -114,7 +114,7 @@ export function Gameboard(props) {
     const newScore = { name: userName, time: time, formatted: formatTime(time) }; 
     // Let other players know the game has concluded
     GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-
+    props.setWinner(newScore);
     updateScoresLocal(newScore);
   }
 
@@ -122,30 +122,30 @@ export function Gameboard(props) {
 
   function updateScoresLocal(newScore) {
     let scores = [];
-  const scoresText = localStorage.getItem('scores');
-  if (scoresText) {
-    scores = JSON.parse(scoresText);
-  }
-
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.time < prevScore.time) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
     }
-  }
 
-  if (!found) {
-    scores.push(newScore);
-  }
+    let found = false;
+    for (const [i, prevScore] of scores.entries()) {
+      if (newScore.time < prevScore.time) {
+        scores.splice(i, 0, newScore);
+        found = true;
+        break;
+      }
+    }
 
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
+    if (!found) {
+      scores.push(newScore);
+    }
 
-  localStorage.setItem('scores', JSON.stringify(scores));
-}
+    if (scores.length > 10) {
+      scores.length = 10;
+    }
+
+    localStorage.setItem('scores', JSON.stringify(scores));
+  }
 
 
 const onSubmit = () => {
