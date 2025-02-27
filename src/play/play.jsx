@@ -4,6 +4,54 @@ import { Players } from './players';
 import { SudokuGame } from './sudokuGame';
 
 export function Play() {
+  const [sudoku, setSudoku] = React.useState([]);
+
+  sudokuRows = [];
+  for (let i = 0; i < 81; i += 9) {
+    set1 = i / 3;
+    set2 = i / 3 + 1;
+    set3 = i / 3 + 2;
+    sudokuRows.push(
+      <tr key={i}>
+        <td class={"block" + set1}>
+          <input type="number" value={sudoku[i]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set1}>
+          <input type="number" value={sudoku[i+1]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set1}>
+          <input type="number" value={sudoku[i+2]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set2}>
+          <input type="number" value={sudoku[i+3]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set2}>
+          <input type="number" value={sudoku[i+4]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set2}>
+          <input type="number" value={sudoku[i+5]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set3}>
+          <input type="number" value={sudoku[i+6]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set3}>
+          <input type="number" value={sudoku[i+7]} onchange={handleChange}/> 
+        </td>
+        <td class={"block" + set3}>
+          <input type="number" value={sudoku[i+8]} onchange={handleChange}/> 
+        </td>
+      </tr>
+    );
+  }
+
+  const handleChange = (e, index) => {
+    const input = e.target.value;
+    const newValue = input.replace(/[^1-9]/g, '').slice(0, 1);
+    const newSudoku = [...sudoku];
+    newSudoku[index] = newValue;
+    setSudoku(newSudoku);
+  };
+
   return (
     <main>
     <section id="puzzle">
@@ -16,105 +64,7 @@ export function Play() {
         </h3>
 
         <table class="centered">
-          <tr>
-            <td class="block1"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block1"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block1"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block1"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block2"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-            <td class="block3"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block4"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block4"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block4"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block4"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block5"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-            <td class="block6"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block7"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block7"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-          </tr>
-          <tr>
-            <td class="block7"><input type="number" min='1' max='9' maxlength="1"/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block7"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block8"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-            <td class="block9"><input type="number" min='1' max='9'/> </td>
-          </tr>
+          {sudokuRows}
         </table>
         <br/>
         <button type="button" class="btn btn-primary">SUBMIT</button>
