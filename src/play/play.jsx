@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // import { Players } from './players';
 import { Gameboard } from './gameboard';
-import { Peripherals } from './peripherals';
 import './play.css';
 
-export function Play() {
+export function Play(props) {
+  
   return (
     <main>
-      <Peripherals />
-      <Gameboard />
+      <Gameboard userName={props.userName}/>
     </main>
   );
 }
