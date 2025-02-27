@@ -123,3 +123,5 @@ npm init -y
 - especially UseEffect and useState
 - useState manages the states of variables in a large table
 - localStorage allows you to store stuff on the user's computer
+
+- Make multiple jsx files as children that get passed up to their parent wrapper page. Different ones represent whole different aspects of the same page (like Authenticated vs nonauthenticated for a login page).
