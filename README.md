@@ -70,8 +70,6 @@ I am going to use the required technologies in the following ways:
 - **DB/Login** - Stores user information, along with leaderboard information and both the initial state and solved state of the day's puzzle in the database. Will register and login users, and store credentials securely. The user cannot save their high score unless logged in.
 - **WebSocket** - As each user completes the sudoku, the updated leaderboard information is broadcast to all other users on the leaderboard page.
 
-<!-- Below is the template code for the deliverables I have not completed yet. It is there for future use. -->
-
 ## 🚀 AWS deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
@@ -111,14 +109,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Components** - I converted all of the previous html, that was multiple pages, into react components to make a single page application.
 - [x] **Router** - There is routing between all of the components that works to switch between the viewed components.
 
-<!-- ## 🚀 React part 2: Reactivity
+## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - All of the functionality is implemented or mocked out, including requiring someone to enter in the password they created when they started the account, updating the scoreboard in real time to represent websockets, and even correctly solving the sudoku (I left it really easy so you could test it easily).
+- [x] **Hooks** - I used many useState and useEffect hooks all over the project, so that it could be reactive. There should be hooks in every file I wrote.
 
-## 🚀 Service deliverable
+<!-- ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 

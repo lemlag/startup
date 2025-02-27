@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { GameEvent, GameNotifier } from './gameNotifier';
 
 
 import './play.css';
@@ -112,8 +111,6 @@ export function Gameboard(props) {
 
   async function saveScore(time) {
     const newScore = { name: userName, time: time, formatted: formatTime(time) }; 
-    // Let other players know the game has concluded
-    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
     props.setWinner(newScore);
     updateScoresLocal(newScore);
   }
