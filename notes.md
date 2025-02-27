@@ -117,3 +117,9 @@ npm init -y
 - Make different jsx file for each view component (webpage)
 - Centralize the universal elements (navbar, etc) in the app.jsx
 - Make a router by using the BrowserRouter component to contain the navigation items
+
+### React part 2
+- Uses hooks to achieve most reactability
+- especially UseEffect and useState
+- useState manages the states of variables in a large table
+- localStorage allows you to store stuff on the user's computer
