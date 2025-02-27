@@ -1,5 +1,7 @@
 import React from 'react';
-import './play.css'
+
+import { Players } from './players';
+import { SudokuGame } from './sudokuGame';
 
 export function Play() {
   return (
