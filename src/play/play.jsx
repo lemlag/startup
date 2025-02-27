@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Players } from './players';
-import { SudokuGame } from './sudokuGame';
+// import { Players } from './players';
+// import { SudokuGame } from './sudokuGame';
 
 export function Play() {
   const [sudoku, setSudoku] = React.useState([]);

@@ -23,7 +23,7 @@ export function Unauthenticated(props) {
         <span>
           Username:
         </span>
-        <input type="text" value="userName" onChange={(e) => setUserName(e.target.value)} placeholder="username@email.com" />
+        <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="username@email.com" />
       </div>
       <div>
         <span>
