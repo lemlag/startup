@@ -125,3 +125,8 @@ npm init -y
 - localStorage allows you to store stuff on the user's computer
 
 - Make multiple jsx files as children that get passed up to their parent wrapper page. Different ones represent whole different aspects of the same page (like Authenticated vs nonauthenticated for a login page).
+
+## Backend
+### SOP
+- Requests have to originate from the same origin to protect users
+- CORS - return values sent by http to allow sharing resources from other origins
