@@ -7,19 +7,19 @@ export function Scores(props) {
 
   // Load scores at the beginning only (when it is rendered) - but maybe also load it when someone else wins
   React.useEffect(() => {
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
-    }
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
   }, []);
 
   React.useEffect(() => {
-    if(winner){
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
-    }
-  }
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
   }, [winner]);
 
   function updateScoresLocal(newScore) {
