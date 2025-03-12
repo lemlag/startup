@@ -76,21 +76,21 @@ export function Gameboard(props) {
     fetchSudokuData();
   }, []);
 
-  React.useEffect(() => {
-    const saveSudokuData = async () => {
-      try {
-        await fetch('/api/sudoku/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({email: userName, userData: userData})
-        });
-      } catch (error) {
-        console.error('Failed to save sudoku data', error);
-      }
-    };
+  // React.useEffect(() => {
+  //   const saveSudokuData = async () => {
+  //     try {
+  //       await fetch('/api/sudoku/save', {
+  //         method: 'POST',
+  //         headers: { 'Content-Type': 'application/json' },
+  //         body: JSON.stringify({email: userName, userData: userData})
+  //       });
+  //     } catch (error) {
+  //       console.error('Failed to save sudoku data', error);
+  //     }
+  //   };
 
-    saveSudokuData();
-  }, [userData]);
+  //   saveSudokuData();
+  // }, [userData]);
 
   const handleChange = (e, rowIndex, colIndex) => {
     const input = e.target.value;
@@ -159,6 +159,15 @@ export function Gameboard(props) {
   }
 
 
+  async function saveGame() {
+    await fetch('/api/sudoku/saves', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({email: userName, userData: userData})
+    });
+  }
+
+
 const onSubmit = () => {
   let score = 0;
   for (let i = 0; i < userData.length; i++) {
@@ -197,6 +206,8 @@ const onSubmit = () => {
       </table>
       <br />
       <button type="button" className="btn btn-primary" onClick={onSubmit}>SUBMIT</button>
+      <button type="button" className="btn btn-primary" onClick={saveGame}>SAVE</button>
+      <button type="button" className="btn btn-primary" onClick={newGame}>NEW GAME</button>
     </section>
   );
 }
