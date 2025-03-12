@@ -7,38 +7,36 @@ import './play.css';
 export function Gameboard(props) {
   const userName = props.userName;
   const [sudoku, setSudoku] = React.useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
-
   const [userData, setUserData] = React.useState(sudoku);
   const [readOnly, setReadOnly] = React.useState([]);
   const [sudSolution, setSudSolution] = React.useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
 
 
-    function DisplayTime() {
-      const [time, setTime] = React.useState(new Date());
-      const startTimeRef = React.useRef(Date.now());
+  const [time, setTime] = React.useState(new Date());
+  const startTimeRef = React.useRef(Date.now());
 
-      // Increment timer every second
-      React.useEffect(() => {
-        const interval = setInterval(() => {
-          setTime(Date.now() - startTimeRef.current);
-        }, 10);
-        return () => {
-          clearInterval(interval);
-        };
-      }, []);
+  // Increment timer every second
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(Date.now() - startTimeRef.current);
+    }, 10);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
-    const [currentDate, setCurrentDate] = React.useState('');
+  const [currentDate, setCurrentDate] = React.useState('');
 
-    // Set the current date when the component mounts
-    React.useEffect(() => {
-      const today = startTimeRef.current;
-      const formattedDate = today.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-      setCurrentDate(formattedDate);
-    }, []);
+  // Set the current date when the component mounts
+  React.useEffect(() => {
+    const today = startTimeRef.current;
+    const formattedDate = today.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    setCurrentDate(formattedDate);
+  }, []);
     
   
     const formatTime = (seconds) => {
@@ -48,26 +46,34 @@ export function Gameboard(props) {
     };
   
   React.useEffect(() => {
-    const response = await fetch('/api/sudoku/saves', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({email: userName})
-    });
+    const fetchSudokuData = async () => {
+      try {
+        const response = await fetch('/api/sudoku/saves', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({email: userName})
+        });
     
-    if (response.ok){
-      const game = await response.json();
-      setSudoku(game.sudoku);
-      setSudSolution(game.solution);
-      setUserData(game.userData);
-      startTimeRef.current = game.startTime;
-    } else {
-      await newGame();
-    }
+        if (response.ok){
+          const game = await response.json();
+          setSudoku(game.sudoku);
+          setSudSolution(game.solution);
+          setUserData(game.userData);
+          startTimeRef.current = game.startTime;
+        } else {
+          await newGame();
+        }
 
-    const initialReadOnly = sudoku.map(row =>
-      row.map(cell => cell !== 0)
-    );
-    setReadOnly(initialReadOnly);
+        const initialReadOnly = sudoku.map(row =>
+          row.map(cell => cell !== 0)
+        );
+        setReadOnly(initialReadOnly);
+      } catch (error) {
+        console.error('Failed to fetch sudoku data', error);
+      }
+    };
+
+    fetchSudokuData();
   }, []);
 
   React.useEffect(() => {
