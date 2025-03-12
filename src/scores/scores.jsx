@@ -7,48 +7,25 @@ export function Scores(props) {
 
   // Load scores at the beginning only (when it is rendered) - but maybe also load it when someone else wins
   React.useEffect(() => {
-    fetch('/api/scores')
+    fetch('/api/times')
       .then((response) => response.json())
-      .then((scores) => {
-        setScores(scores);
+      .then((times) => {
+        setScores(times);
       });
   }, []);
 
   React.useEffect(() => {
-    fetch('/api/scores')
+    fetch('/api/times')
       .then((response) => response.json())
-      .then((scores) => {
-        setScores(scores);
+      .then((times) => {
+        setScores(times);
       });
   }, [winner]);
 
-  function updateScoresLocal(newScore) {
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-
-    let found = false;
-    for (const [i, prevScore] of scores.entries()) {
-      if (newScore.time < prevScore.time) {
-        scores.splice(i, 0, newScore);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      scores.push(newScore);
-    }
-
-    if (scores.length > 10) {
-      scores.length = 10;
-    }
+  function updateScores(newScore) {
 
     props.setWinner(newScore)
 
-    localStorage.setItem('scores', JSON.stringify(scores));
   }
 
   const formatTime = (seconds) => {
@@ -57,10 +34,12 @@ export function Scores(props) {
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
+  // Fix demonstration for websocket functionality
   setInterval(() => {
     const thisTime = Math.floor(Math.random() * 4000);
     const newScore = { name: `User-${Math.floor(Math.random() * 100)}`, time: thisTime, formatted: formatTime(thisTime) };
-    updateScoresLocal(newScore);
+    fetch('/api/time')
+    updateScores(newScore);
   }, 10000);
 
   const scoreRows = [];
