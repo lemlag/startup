@@ -133,6 +133,31 @@ export function Gameboard(props) {
     props.setWinner(newScore);
   }
 
+  async function newGame() {
+    await fetch('https://sudoku-api.vercel.app/api/dosuku')
+      .then((response) => response.json())
+      .then((data) => {
+        const board = data.grid
+        setSudoku(board.value);
+        setSudSolution(board.solution);
+        setUserData(board.value);
+        const initialReadOnly = board.value.map(row =>
+          row.map(cell => cell !== 0)
+        );
+        setReadOnly(initialReadOnly);
+      })
+      .catch();
+
+    await fetch('/api/sudoku/newGame', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({email: userName, sudoku: sudoku, solution: sudSolution})
+    }).then((response) => response.json())
+      .then((startTime) => {
+        startTimeRef.current = startTime;
+      });
+  }
+
 
 const onSubmit = () => {
   let score = 0;
