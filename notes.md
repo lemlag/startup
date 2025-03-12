@@ -136,3 +136,5 @@ npm init -y
 - Backend - whenever getting from database, make it async/await bc could take a long time
 - Use middleware to protect yourself from running code when the user is not authorized
 
+- You can call your functions straight from the button presses
+- The .then() calls just work for concise code, you can still elongate the code if you need to.

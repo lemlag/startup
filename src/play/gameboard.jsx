@@ -12,7 +12,7 @@ export function Gameboard(props) {
   const [sudSolution, setSudSolution] = React.useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
 
 
-  const [time, setTime] = React.useState(new Date());
+  const [timer, setTime] = React.useState(new Date());
   const startTimeRef = React.useRef(Date.now());
 
   // Increment timer every second
@@ -29,7 +29,7 @@ export function Gameboard(props) {
 
   // Set the current date when the component mounts
   React.useEffect(() => {
-    const today = startTimeRef.current;
+    const today = new Date(startTimeRef.current);
     const formattedDate = today.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -39,10 +39,11 @@ export function Gameboard(props) {
   }, []);
     
   
-    const formatTime = (seconds) => {
-      const mins = Math.floor(seconds / 60);
-      const secs = seconds % 60;
-      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    const formatTime = (milliseconds) => {
+      const mins = Math.floor(milliseconds / 60000);
+      const secs = Math.floor(milliseconds / 1000) % 60;
+      const hours = Math.floor(mins / 60);
+      return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
   
   React.useEffect(() => {
