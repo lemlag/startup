@@ -28,37 +28,39 @@ export function Gameboard(props) {
     [4,6,5,1,7,9,8,2,3]])
 
 
-    const [timer, setTimer] = React.useState(0);
-    const [currentDate, setCurrentDate] = React.useState('');
-  
+    function DisplayTime() {
+      const [time, setTime] = React.useState(new Date());
+      const startTimeRef = React.useRef(Date.now());
+
       // Increment timer every second
       React.useEffect(() => {
         const interval = setInterval(() => {
-          setTimer((prevTimer) => prevTimer + 1);
-        }, 1000);
-    
+          setTime(Date.now() - startTimeRef.current);
+        }, 10);
         return () => {
           clearInterval(interval);
         };
       }, []);
+
+    const [currentDate, setCurrentDate] = React.useState('');
     
-      // Set the current date when the component mounts
-      React.useEffect(() => {
-        const today = new Date();
-        const formattedDate = today.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-        setCurrentDate(formattedDate);
-      }, []);
+    // Set the current date when the component mounts
+    React.useEffect(() => {
+      const today = startTimeRef.current;
+      const formattedDate = today.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      setCurrentDate(formattedDate);
+    }, []);
     
   
-      const formatTime = (seconds) => {
-          const mins = Math.floor(seconds / 60);
-          const secs = seconds % 60;
-          return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-        };
+    const formatTime = (seconds) => {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    };
   
 
 
@@ -109,39 +111,16 @@ export function Gameboard(props) {
     );
   }
 
-  async function saveScore(time) {
-    const newScore = { name: userName, time: time, formatted: formatTime(time) }; 
+
+  async function submit(time) {
+    const newScore = { name: userName, time: time, formatted: formatTime(time) };
+    await fetch('/api/sudoku/submit', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
+
     props.setWinner(newScore);
-    updateScoresLocal(newScore);
-  }
-
-
-
-  function updateScoresLocal(newScore) {
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-
-    let found = false;
-    for (const [i, prevScore] of scores.entries()) {
-      if (newScore.time < prevScore.time) {
-        scores.splice(i, 0, newScore);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      scores.push(newScore);
-    }
-
-    if (scores.length > 10) {
-      scores.length = 10;
-    }
-
-    localStorage.setItem('scores', JSON.stringify(scores));
   }
 
 
@@ -159,7 +138,7 @@ const onSubmit = () => {
     }
   }
   if (score === 81) {
-  saveScore(timer);
+    submit(timer);
   }
   else {
     alert("Incorrect Solution" + " " + score + " " + "cells are correct");
