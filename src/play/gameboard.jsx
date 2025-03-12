@@ -77,22 +77,34 @@ export function Gameboard(props) {
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem('sudoku', JSON.stringify(sudoku));
-  }, [sudoku]);
+    const saveSudokuData = async () => {
+      try {
+        await fetch('/api/sudoku/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({email: userName, userData: userData})
+        });
+      } catch (error) {
+        console.error('Failed to save sudoku data', error);
+      }
+    };
+
+    saveSudokuData();
+  }, [userData]);
 
   const handleChange = (e, rowIndex, colIndex) => {
     const input = e.target.value;
     const newValue = input.replace(/[^1-9]/g, '').slice(0, 1);
-    const newSudoku = [...sudoku];
+    const newSudoku = [...userData];
     newSudoku[rowIndex][colIndex] = newValue;
-    setSudoku(newSudoku);
+    setUserData(newSudoku);
   }
 
   const sudokuRows = [];
-  for (let rowIndex = 0; rowIndex < sudoku.length; rowIndex++) {
+  for (let rowIndex = 0; rowIndex < userData.length; rowIndex++) {
     sudokuRows.push(
       <tr key={rowIndex}>
-        {sudoku[rowIndex].map((cell, colIndex) => {
+        {userData[rowIndex].map((cell, colIndex) => {
           const setClass = `block${Math.floor(rowIndex / 3) * 3 + Math.floor(colIndex / 3)}`;
           return (
             <td key={colIndex} className={setClass}>
@@ -124,12 +136,12 @@ export function Gameboard(props) {
 
 const onSubmit = () => {
   let score = 0;
-  for (let i = 0; i < sudoku.length; i++) {
-    for (let j = 0; j < sudoku[i].length; j++) {
-      if (sudoku[i][j] === sudSolution[i][j]) {
+  for (let i = 0; i < userData.length; i++) {
+    for (let j = 0; j < userData[i].length; j++) {
+      if (userData[i][j] === sudSolution[i][j]) {
         score += 1;
       } else{
-        if (sudoku[i][j] - sudSolution[i][j] === 0) {
+        if (userData[i][j] - sudSolution[i][j] === 0) {
           score += 1;
         }
       }
