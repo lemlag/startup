@@ -130,3 +130,9 @@ npm init -y
 ### SOP
 - Requests have to originate from the same origin to protect users
 - CORS - return values sent by http to allow sharing resources from other origins
+
+### Endpoints
+- Use fetch with the path for the back end point
+- Backend - whenever getting from database, make it async/await bc could take a long time
+- Use middleware to protect yourself from running code when the user is not authorized
+
