@@ -6,26 +6,11 @@ import './play.css';
 
 export function Gameboard(props) {
   const userName = props.userName;
-  const [sudoku, setSudoku] = React.useState([[6,9,8,2,5,7,1,3,4],
-    [5,4,2,3,6,1,9,8,7],
-    [7,1,3,9,4,8,6,5,2],
-    [9,5,4,7,8,2,3,1,6],
-    [2,8,6,4,1,3,7,9,5],
-    [3,7,1,5,9,6,2,4,8],
-    [8,2,9,6,3,4,5,7,1],
-    [1,3,7,8,2,5,4,6,9],
-    [0,6,5,1,0,9,0,0,0]]);
+  const [sudoku, setSudoku] = React.useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
 
+  const [userData, setUserData] = React.useState(sudoku);
   const [readOnly, setReadOnly] = React.useState([]);
-  const [sudSolution, setSudSolution] = React.useState([[6,9,8,2,5,7,1,3,4],
-    [5,4,2,3,6,1,9,8,7],
-    [7,1,3,9,4,8,6,5,2],
-    [9,5,4,7,8,2,3,1,6],
-    [2,8,6,4,1,3,7,9,5],
-    [3,7,1,5,9,6,2,4,8],
-    [8,2,9,6,3,4,5,7,1],
-    [1,3,7,8,2,5,4,6,9],
-    [4,6,5,1,7,9,8,2,3]])
+  const [sudSolution, setSudSolution] = React.useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
 
 
     function DisplayTime() {
@@ -43,7 +28,7 @@ export function Gameboard(props) {
       }, []);
 
     const [currentDate, setCurrentDate] = React.useState('');
-    
+
     // Set the current date when the component mounts
     React.useEffect(() => {
       const today = startTimeRef.current;
@@ -62,14 +47,21 @@ export function Gameboard(props) {
       return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
   
-
-
   React.useEffect(() => {
-    const sudokuText = localStorage.getItem('sudoku');
-    if (sudokuText) {
-      setSudoku(JSON.parse(sudokuText));
+    const response = await fetch('/api/sudoku/saves', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({email: userName})
+    });
+    
+    if (response.ok){
+      const game = await response.json();
+      setSudoku(game.sudoku);
+      setSudSolution(game.solution);
+      setUserData(game.userData);
+      startTimeRef.current = game.startTime;
     } else {
-      localStorage.setItem('sudoku', JSON.stringify(sudoku));
+      await newGame();
     }
 
     const initialReadOnly = sudoku.map(row =>

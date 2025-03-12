@@ -75,7 +75,11 @@ apiRouter.get('/times', verifyAuth, (_req, res) => {
 // GetGame
 apiRouter.get('/sudoku/saves', verifyAuth, async (req, res) => {
   sudoku = await getGame(req.body.email);
-  res.send(sudoku);
+  if (sudoku) {
+    res.send(sudoku);
+  } else {
+    res.status(404).end();
+  }
 });
 
 // SaveSudoku
