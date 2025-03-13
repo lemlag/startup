@@ -17,20 +17,14 @@ export function Gameboard(props) {
   const intervalRef = React.useRef(null);
 
   const startTimer = () => {
-    console.log("Start Time Ref: " ,startTimeRef.current);
-    console.log("Time: " ,timer);
     intervalRef.current = setInterval(() => {
       setTime(Date.now() - startTimeRef.current);
     }, 10);
-    console.log("Interval Ref: " ,intervalRef.current);
 
   };
 
   const resetTimer = () => { 
     clearInterval(intervalRef.current);
-    console.log("Interval Ref: " ,intervalRef.current);
-    // setTime(Date.now() - startTimeRef.current);
-    // console.log("Interval Ref: " ,intervalRef.current);
 
     startTimer();
   }
@@ -85,7 +79,6 @@ export function Gameboard(props) {
           console.log("For TA Graders:", game.solution);
           setUserData(game.userData);
           startTimeRef.current = game.startTime;
-          console.log("STR:", startTimeRef.current);
           resetTimer();
           const initialReadOnly = game.sudoku.map(row =>
             row.map(cell => cell !== 0)
@@ -165,8 +158,6 @@ export function Gameboard(props) {
         );
         setReadOnly(initialReadOnly);
         startTimeRef.current = Date.now();
-        console.log("sTr:", startTimeRef.current);
-        console.log(startTimeRef.current);
         resetTimer();
       })
       .catch();
