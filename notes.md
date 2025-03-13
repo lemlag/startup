@@ -138,3 +138,6 @@ npm init -y
 
 - You can call your functions straight from the button presses
 - The .then() calls just work for concise code, you can still elongate the code if you need to.
+
+### Saving data
+- Your saved items will not be available right away, so make sure any intermediate calculations use intermediate variables, not longer-term variables.

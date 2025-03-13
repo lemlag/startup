@@ -116,25 +116,27 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **All functionality implemented or mocked out** - All of the functionality is implemented or mocked out, including requiring someone to enter in the password they created when they started the account, updating the scoreboard in real time to represent websockets, and even correctly solving the sudoku (I left it really easy so you could test it easily).
 - [x] **Hooks** - I used many useState and useEffect hooks all over the project, so that it could be reactive. There should be hooks in every file I wrote.
 
-<!-- ## 🚀 Service deliverable
+## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - My service uses Node.js and Express, as per the instructions.
+- [x] **Static middleware for frontend** - The frontend is served up using Express static middleware, as per the instructions.
+- [x] **Calls to third party endpoints** - I called a third party endpoint to provide the sudoku and the sudoku's solution so the user could have a randomly generated but legal sudoku every time.
+- [x] **Backend service endpoints** - I made backend service endpoints for each major aspect of communication between the frontend and backend, including saving data, submitting the sudoku, and registering for and creating users.
+- [x] **Frontend calls service endpoints** - I called service endpoints every time the user needs to communicate with the server, which is fairly frequently with saving, submitting, and creating new games, along with displaying the scoreboard and logging in.
+- [x] **User registration** - User can register a new user, but only if the username is not already taken by someone else.
+- [x] **User login and logout** - User can log in and log out after registering, and the user's data persists.
+- [x] **Restricts functionality based on authentication** - A user is not allowed to save a game if they are not logged in, and their scores are not posted to the scoreboard.
 
-## 🚀 DB/Login deliverable
+<!-- ## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
+
 - [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
 - [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+
 
 ## 🚀 WebSocket deliverable
 
