@@ -44,7 +44,7 @@ export function Scores(props) {
       body: JSON.stringify(newScore),
     })
     updateScores(newScore);
-  }, 100000);
+  }, 10000);
 
   const scoreRows = [];
   if(scores.length) {
