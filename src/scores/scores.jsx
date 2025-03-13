@@ -23,9 +23,7 @@ export function Scores(props) {
   }, [winner]);
 
   function updateScores(newScore) {
-
     props.setWinner(newScore)
-
   }
 
   const formatTime = (seconds) => {
@@ -38,7 +36,7 @@ export function Scores(props) {
   setInterval(() => {
     const thisTime = Math.floor(Math.random() * 4000);
     const newScore = { name: `User-${Math.floor(Math.random() * 100)}`, time: thisTime, formatted: formatTime(thisTime) };
-    fetch('/api/time')
+    fetch('/api/times')
     updateScores(newScore);
   }, 10000);
 
