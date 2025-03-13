@@ -145,6 +145,7 @@ export function Gameboard(props) {
           row.map(cell => cell !== 0)
         );
         setReadOnly(initialReadOnly);
+        startTimeRef.current = Date.now();
       })
       .catch();
 
@@ -187,11 +188,21 @@ const onSubmit = () => {
   }
   if (score === 81) {
     submit(timer);
+    alert("Correct Solution: " + score + " " + "cells are correct");
   }
   else {
-    alert("Incorrect Solution" + " " + score + " " + "cells are correct");
+    alert("Incorrect Solution: " + score + " " + "cells are correct");
   }
 };
+
+const solve = () => {
+  const newSudoku = sudSolution;
+  setUserData(newSudoku);
+  const initialReadOnly = newSudoku.map(row =>
+    row.map(cell => cell !== 0)
+  );
+  setReadOnly(initialReadOnly);
+}
 
 
   return (
@@ -212,6 +223,7 @@ const onSubmit = () => {
       <button type="button" className="btn btn-primary" onClick={onSubmit}>SUBMIT</button>
       <button type="button" className="btn btn-primary" onClick={saveGame}>SAVE</button>
       <button type="button" className="btn btn-primary" onClick={newGame}>NEW GAME</button>
+      <button type="button" className="btn btn-primary" onClick={solve}>SOLVE (testing only)</button>
     </section>
   );
 }

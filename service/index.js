@@ -91,7 +91,7 @@ apiRouter.post('/sudoku/saves', verifyAuth, async (req, res) => {
 
 // SubmitSudoku
 apiRouter.post('/sudoku/submit', verifyAuth, (req, res) => {
-    times = updateScores(req.body.time);
+    times = updateScores(req.body);
     res.send(times);
 });
 
@@ -128,8 +128,8 @@ function updateScores(newTime) {
     times.push(newTime);
   }
 
-  if (times.length > 20) {
-    times.length = 20;
+  if (times.length > 10) {
+    times.length = 10;
   }
 
   return times;
@@ -138,7 +138,6 @@ function updateScores(newTime) {
 async function getGame(email){
   const game = await findGame('email', email);
   if (game) {
-    console.log(game);
     return game;
   } else {
     return null;
@@ -181,7 +180,6 @@ async function newGame(email, sudoku, solution) {
   };
   games.push(game);
 
-  console.log(game);
 
   return game.startTime;
 }

@@ -5,7 +5,7 @@
     flex-direction: column;
     height: 100vh;
     margin: 0px !important;
-    overflow-y:hidden;
+    /* overflow-y:hidden; */
   }
 
   h1 {
@@ -164,6 +164,7 @@
     aside {
       text-align: center;
       margin: 0;
+      flex-basis: 160px;
     }
     
   }

@@ -36,9 +36,15 @@ export function Scores(props) {
   setInterval(() => {
     const thisTime = Math.floor(Math.random() * 4000);
     const newScore = { name: `User-${Math.floor(Math.random() * 100)}`, time: thisTime, formatted: formatTime(thisTime) };
-    fetch('/api/times')
+    fetch('/api/sudoku/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newScore),
+    })
     updateScores(newScore);
-  }, 10000);
+  }, 100000);
 
   const scoreRows = [];
   if(scores.length) {
