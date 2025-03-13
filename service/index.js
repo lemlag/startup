@@ -98,7 +98,7 @@ apiRouter.post('/sudoku/submit', verifyAuth, (req, res) => {
 // NewSudoku
 apiRouter.post('/sudoku/newGame', verifyAuth, (req, res) => {
     sudoku = newGame(req.body.email, req.body.sudoku, req.body.solution);
-    res.send(sudoku);
+    res.status(204).end();
 });
 
 

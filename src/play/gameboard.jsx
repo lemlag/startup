@@ -14,14 +14,31 @@ export function Gameboard(props) {
 
   const [timer, setTime] = React.useState(new Date());
   const startTimeRef = React.useRef(Date.now());
+  const intervalRef = React.useRef(null);
+
+  const startTimer = () => {
+    console.log("Start Time Ref: " ,startTimeRef.current);
+    console.log("Time: " ,timer);
+    intervalRef.current = setInterval(() => {
+      setTime(Date.now() - startTimeRef.current);
+    }, 10);
+    console.log("Interval Ref: " ,intervalRef.current);
+
+  };
+
+  const resetTimer = () => { 
+    clearInterval(intervalRef.current);
+    console.log("Interval Ref: " ,intervalRef.current);
+    // setTime(Date.now() - startTimeRef.current);
+    // console.log("Interval Ref: " ,intervalRef.current);
+
+    startTimer();
+  }
 
   // Increment timer every second
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(Date.now() - startTimeRef.current);
-    }, 10);
     return () => {
-      clearInterval(interval);
+      clearInterval(intervalRef.current);
     };
   }, []);
 
@@ -68,6 +85,8 @@ export function Gameboard(props) {
           console.log("For TA Graders:", game.solution);
           setUserData(game.userData);
           startTimeRef.current = game.startTime;
+          console.log("STR:", startTimeRef.current);
+          resetTimer();
           const initialReadOnly = game.sudoku.map(row =>
             row.map(cell => cell !== 0)
           );
@@ -146,6 +165,9 @@ export function Gameboard(props) {
         );
         setReadOnly(initialReadOnly);
         startTimeRef.current = Date.now();
+        console.log("sTr:", startTimeRef.current);
+        console.log(startTimeRef.current);
+        resetTimer();
       })
       .catch();
 
@@ -153,11 +175,10 @@ export function Gameboard(props) {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({email: userName, sudoku: newBoard, solution: newBoardSolution})
-    }).then((startTime) => {
-        startTimeRef.current = startTime;
-      })
+    })
       .catch(error =>{
         startTimeRef.current = Date.now();
+        resetTimer();
         console.error('Not logged in, I suppose', error);
       });
   
@@ -188,7 +209,7 @@ const onSubmit = () => {
   }
   if (score === 81) {
     submit(timer);
-    alert("Correct Solution: " + score + " " + "cells are correct");
+    alert("Correct Solution: all cells are correct");
   }
   else {
     alert("Incorrect Solution: " + score + " " + "cells are correct");
