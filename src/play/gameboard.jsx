@@ -190,6 +190,13 @@ export function Gameboard(props) {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({email: userName, userData: userData})
+    }).then((response) => {
+      if(response.ok){
+        alert("Game Saved");
+      }
+      else{
+        alert("Not logged in. Log in to save game");
+      }
     });
   }
 
