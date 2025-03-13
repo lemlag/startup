@@ -73,8 +73,9 @@ apiRouter.get('/times', verifyAuth, (_req, res) => {
 });
 
 // GetGame
-apiRouter.get('/sudoku/saves', verifyAuth, async (req, res) => {
-  sudoku = await getGame(req.body.email);
+apiRouter.get('/sudoku/saves', verifyAuth, async (_req, res) => {
+  const user = await findUser('token', _req.cookies[authCookieName]);
+  sudoku = await getGame(user.email);
   if (sudoku) {
     res.send(sudoku);
   } else {
@@ -97,7 +98,7 @@ apiRouter.post('/sudoku/submit', verifyAuth, (req, res) => {
 // NewSudoku
 apiRouter.post('/sudoku/newGame', verifyAuth, (req, res) => {
     sudoku = newGame(req.body.email, req.body.sudoku, req.body.solution);
-    res.send(sudoku.startTime);
+    res.send(sudoku);
 });
 
 
@@ -137,6 +138,7 @@ function updateScores(newTime) {
 async function getGame(email){
   const game = await findGame('email', email);
   if (game) {
+    console.log(game);
     return game;
   } else {
     return null;
@@ -179,7 +181,9 @@ async function newGame(email, sudoku, solution) {
   };
   games.push(game);
 
-  return game;
+  console.log(game);
+
+  return game.startTime;
 }
 
 async function findUser(field, value) {

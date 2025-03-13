@@ -49,26 +49,36 @@ export function Gameboard(props) {
   React.useEffect(() => {
     const fetchSudokuData = async () => {
       try {
-        const response = await fetch('/api/sudoku/saves', {
+        await fetch('/api/sudoku/saves', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({email: userName})
-        });
-    
-        if (response.ok){
-          const game = await response.json();
+        }).then((response) => {
+          if(response.ok) 
+            {return response.json()} 
+          else if(response.status === 401){
+            throw new Error('Not logged in, I suppose')
+          }
+          else if(response.status === 404)
+            {throw new Error('No Saved Game')}
+          else
+            {throw new Error('Other error')}
+        }).then((game) => {
           setSudoku(game.sudoku);
           setSudSolution(game.solution);
+          console.log("For TA Graders:", game.solution);
           setUserData(game.userData);
           startTimeRef.current = game.startTime;
-        } else {
-          await newGame();
-        }
+          const initialReadOnly = game.sudoku.map(row =>
+            row.map(cell => cell !== 0)
+          );
+          setReadOnly(initialReadOnly);
+        })
+        .catch(error => {
+          newGame();
+          console.error('Failed to fetch sudoku data', error);
+        });
 
-        const initialReadOnly = sudoku.map(row =>
-          row.map(cell => cell !== 0)
-        );
-        setReadOnly(initialReadOnly);
+
       } catch (error) {
         console.error('Failed to fetch sudoku data', error);
       }
@@ -76,22 +86,6 @@ export function Gameboard(props) {
 
     fetchSudokuData();
   }, []);
-
-  // React.useEffect(() => {
-  //   const saveSudokuData = async () => {
-  //     try {
-  //       await fetch('/api/sudoku/save', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify({email: userName, userData: userData})
-  //       });
-  //     } catch (error) {
-  //       console.error('Failed to save sudoku data', error);
-  //     }
-  //   };
-
-  //   saveSudokuData();
-  // }, [userData]);
 
   const handleChange = (e, rowIndex, colIndex) => {
     const input = e.target.value;
@@ -135,12 +129,17 @@ export function Gameboard(props) {
   }
 
   async function newGame() {
+    var newBoard;
+    var newBoardSolution;
     await fetch('https://sudoku-api.vercel.app/api/dosuku')
       .then((response) => response.json())
       .then((data) => {
-        const board = data.grid
+        const board = data.newboard.grids[0]
+        newBoard = board.value;
+        newBoardSolution = board.solution;
         setSudoku(board.value);
         setSudSolution(board.solution);
+        console.log("For TA Graders:", board.solution);
         setUserData(board.value);
         const initialReadOnly = board.value.map(row =>
           row.map(cell => cell !== 0)
@@ -152,11 +151,15 @@ export function Gameboard(props) {
     await fetch('/api/sudoku/newGame', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({email: userName, sudoku: sudoku, solution: sudSolution})
-    }).then((response) => response.json())
-      .then((startTime) => {
+      body: JSON.stringify({email: userName, sudoku: newBoard, solution: newBoardSolution})
+    }).then((startTime) => {
         startTimeRef.current = startTime;
+      })
+      .catch(error =>{
+        startTimeRef.current = Date.now();
+        console.error('Not logged in, I suppose', error);
       });
+  
   }
 
 
