@@ -183,8 +183,7 @@ async function newGame(email, sudoku, solution) {
     startTime: Date.now(),
     endTime: null,
   };
-  games.push(game);
-
+  await DB.addGame(game);
 
   return game.startTime;
 }
