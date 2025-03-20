@@ -201,7 +201,7 @@ async function findUser(field, value) {
 async function findGame(field, value) {
   if (!value) return null;
 
-  return games.find((g) => g[field] === value);
+  return DB.getGame(value);
 }
 
 // setAuthCookie in the HTTP response
