@@ -192,7 +192,10 @@ async function newGame(email, sudoku, solution) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token'){
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 async function findGame(field, value) {
@@ -210,6 +213,6 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
