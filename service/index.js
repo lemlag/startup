@@ -68,7 +68,7 @@ const verifyAuth = async (req, res, next) => {
 
 
 // GetTimes
-apiRouter.get('/times', verifyAuth, (_req, res) => {
+apiRouter.get('/times', verifyAuth, async (_req, res) => {
   const times = await DB.getBestTimes();
   res.send(times);
 });
