@@ -50,6 +50,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if (user) {
         delete user.token;
+        DB.updateUser(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -68,6 +69,7 @@ const verifyAuth = async (req, res, next) => {
 
 // GetTimes
 apiRouter.get('/times', verifyAuth, (_req, res) => {
+  const times = await DB.getBestTimes();
   res.send(times);
 });
 
@@ -90,7 +92,7 @@ apiRouter.post('/sudoku/saves', verifyAuth, async (req, res) => {
 
 // SubmitSudoku
 apiRouter.post('/sudoku/submit', verifyAuth, (req, res) => {
-    times = updateScores(req.body);
+    const times = updateScores(req.body);
     res.send(times);
 });
 
@@ -113,25 +115,29 @@ app.use((_req, res) => {
 
 
 // updateScores considers a new time for inclusion in the high times.
-function updateScores(newTime) {
-  let found = false;
-  for (const [i, prevTime] of times.entries()) {
-    if (newTime.time < prevTime.time) {
-      times.splice(i, 0, newTime);
-      found = true;
-      break;
-    }
-  }
+// function updateScores(newTime) {
+//   let found = false;
+//   for (const [i, prevTime] of times.entries()) {
+//     if (newTime.time < prevTime.time) {
+//       times.splice(i, 0, newTime);
+//       found = true;
+//       break;
+//     }
+//   }
 
-  if (!found) {
-    times.push(newTime);
-  }
+//   if (!found) {
+//     times.push(newTime);
+//   }
 
-  if (times.length > 10) {
-    times.length = 10;
-  }
+//   if (times.length > 10) {
+//     times.length = 10;
+//   }
 
-  return times;
+//   return times;
+// }
+async function updateScores(newTime) {
+  await DB.addTime(newTime);
+  return DB.getBestTimes();
 }
 
 async function getGame(email){
@@ -163,7 +169,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
