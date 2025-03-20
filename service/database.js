@@ -6,6 +6,7 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
 const timeCollection = db.collection('time');
+const gameCollection = db.collection('game');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -48,11 +49,16 @@ function getBestTime() {
   return cursor.toArray();
 }
 
+function getGame(email) {
+  return gameCollection.findOne({ email: email });
+}
+
 module.exports = {
   getUser,
   getUserByToken,
   addUser,
   updateUser,
-  addScore,
-  getHighScores,
+  addTime,
+  getBestTime,
+  getGame,
 };

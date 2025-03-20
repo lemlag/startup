@@ -141,7 +141,7 @@ async function updateScores(newTime) {
 }
 
 async function getGame(email){
-  const game = await findGame('email', email);
+  const game = await findGame(email);
   if (game) {
     return game;
   } else {
@@ -150,7 +150,7 @@ async function getGame(email){
 }
 
 async function saveGame(email, userData){
-  const game = await findGame('email', email);
+  const game = await findGame(email);
   if (game) {
     game.userData = userData;
     return game;
@@ -197,7 +197,7 @@ async function findUser(field, value) {
   return DB.getUser(value);
 }
 
-async function findGame(field, value) {
+async function findGame(value) {
   if (!value) return null;
 
   return DB.getGame(value);
