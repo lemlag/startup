@@ -53,6 +53,10 @@ function getGame(email) {
   return gameCollection.findOne({ email: email });
 }
 
+async function addGame(game) {
+  await gameCollection.insertOne(game);
+}
+
 module.exports = {
   getUser,
   getUserByToken,
@@ -61,4 +65,6 @@ module.exports = {
   addTime,
   getBestTime,
   getGame,
+  addGame,
+  
 };
