@@ -39,7 +39,7 @@ async function addTime(time) {
   return timeCollection.insertOne(time);
 }
 
-function getBestTime() {
+function getBestTimes() {
   const query = { time: { $gt: 0, $lt: 1000000 } };
   const options = {
     sort: { time: 1 },
@@ -63,8 +63,8 @@ module.exports = {
   addUser,
   updateUser,
   addTime,
-  getBestTime,
+  getBestTimes,
   getGame,
   addGame,
-  
+
 };
