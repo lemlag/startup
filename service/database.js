@@ -38,13 +38,13 @@ async function addTime(time) {
   return timeCollection.insertOne(time);
 }
 
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
+function getBestTime() {
+  const query = { time: { $gt: 0, $lt: 1000000 } };
   const options = {
-    sort: { score: -1 },
+    sort: { time: 1 },
     limit: 10,
   };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = timeCollection.find(query, options);
   return cursor.toArray();
 }
 
