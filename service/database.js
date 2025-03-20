@@ -57,6 +57,10 @@ async function addGame(game) {
   await gameCollection.insertOne(game);
 }
 
+async function updateGame(game) {
+  await gameCollection.updateOne({ email: game.email }, { $set: game });
+}
+
 module.exports = {
   getUser,
   getUserByToken,
@@ -66,5 +70,5 @@ module.exports = {
   getBestTimes,
   getGame,
   addGame,
-
+  updateGame,
 };

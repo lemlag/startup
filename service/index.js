@@ -153,6 +153,7 @@ async function saveGame(email, userData){
   const game = await findGame(email);
   if (game) {
     game.userData = userData;
+    await DB.updateGame(game);
     return game;
   } else {
     return null;
