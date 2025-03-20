@@ -113,28 +113,6 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-
-// updateScores considers a new time for inclusion in the high times.
-// function updateScores(newTime) {
-//   let found = false;
-//   for (const [i, prevTime] of times.entries()) {
-//     if (newTime.time < prevTime.time) {
-//       times.splice(i, 0, newTime);
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   if (!found) {
-//     times.push(newTime);
-//   }
-
-//   if (times.length > 10) {
-//     times.length = 10;
-//   }
-
-//   return times;
-// }
 async function updateScores(newTime) {
   await DB.addTime(newTime);
   return DB.getBestTimes();
