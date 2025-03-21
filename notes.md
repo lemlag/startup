@@ -146,3 +146,5 @@ npm init -y
 - Good policy demands that you should not have a database on your server, because if you ever fill up the memory the whole server will crash.
 - Servers should be replaceable and easily reproducible. Databases do not let this happen
 - Use a database service - they are often free for a limited amount of storage and time, so good for small things.
+
+- Different database documents should be used for different data types. MongoDB has a thing where similar data can be in the same document without issues, but make sure it needs to be there

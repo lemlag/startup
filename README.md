@@ -129,16 +129,16 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **User login and logout** - User can log in and log out after registering, and the user's data persists.
 - [x] **Restricts functionality based on authentication** - A user is not allowed to save a game if they are not logged in, and their scores are not posted to the scoreboard.
 
-<!-- ## 🚀 DB/Login deliverable
+## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - Stores game and best time information in MongoDB.
+- [x] **Stores credentials in MongoDB** - Stores authentication data in MongoDB.
 
 
-## 🚀 WebSocket deliverable
+<!-- ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
