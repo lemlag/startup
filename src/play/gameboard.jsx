@@ -51,9 +51,9 @@ export function Gameboard(props) {
     
   
     const formatTime = (milliseconds) => {
-      const mins = Math.floor(milliseconds / 60000);
       const secs = Math.floor(milliseconds / 1000) % 60;
-      const hours = Math.floor(mins / 60);
+      const mins = Math.floor(milliseconds / 60000) % 60;
+      const hours = Math.floor(milliseconds / 360000);
       return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
   

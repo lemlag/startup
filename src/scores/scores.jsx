@@ -26,15 +26,16 @@ export function Scores(props) {
     props.setWinner(newScore)
   }
 
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  const formatTime = (milliseconds) => {
+    const secs = Math.floor(milliseconds / 1000) % 60;
+    const mins = Math.floor(milliseconds / 60000) % 60;
+    const hours = Math.floor(milliseconds / 360000);
+    return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
   // Fix demonstration for websocket functionality
   setInterval(() => {
-    const thisTime = Math.floor(Math.random() * 4000);
+    const thisTime = Math.floor(Math.random() * 86000000);
     const newScore = { name: `User-${Math.floor(Math.random() * 100)}`, time: thisTime, formatted: formatTime(thisTime) };
     fetch('/api/sudoku/submit', {
       method: 'POST',

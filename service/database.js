@@ -40,7 +40,7 @@ async function addTime(time) {
 }
 
 function getBestTimes() {
-  const query = { time: { $gt: 0, $lt: 1000000 } };
+  const query = { time: { $gt: 0, $lt: 86000000 } };
   const options = {
     sort: { time: 1 },
     limit: 10,
