@@ -1,5 +1,6 @@
 import React from 'react';
 import './scores.css'
+import { GameEvent, ScoreClient } from '../play/scoreClient';
 
 export function Scores(props) {
   const [scores, setScores] = React.useState([]);
