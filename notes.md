@@ -148,3 +148,6 @@ npm init -y
 - Use a database service - they are often free for a limited amount of storage and time, so good for small things.
 
 - Different database documents should be used for different data types. MongoDB has a thing where similar data can be in the same document without issues, but make sure it needs to be there
+
+## Websocket
+Websocket messages can be relayed from client to client through the server.
