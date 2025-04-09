@@ -139,7 +139,7 @@ export function Gameboard(props) {
       body: JSON.stringify(newScore),
     });
 
-    props.setWinner(newScore);
+    scoreClient.updateScores(userName, GameEvent.Submit, newScore);
   }
 
   async function newGame() {

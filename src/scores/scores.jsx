@@ -5,7 +5,6 @@ import { GameEvent, ScoreClient } from '../play/scoreClient';
 export function Scores(props) {
   const [scores, setScores] = React.useState([]);
   const [events, setEvent] = React.useState([]);
-  const winner = props.winner;
 
   // Load scores at the beginning only (when it is rendered) - but maybe also load it when someone else wins
   React.useEffect(() => {
