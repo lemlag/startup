@@ -138,15 +138,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Stores credentials in MongoDB** - Stores authentication data in MongoDB.
 
 
-<!-- ## 🚀 WebSocket deliverable
+## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable. -->
+- [x] **Backend listens for WebSocket connection** - The backend passes the websocket message on perfectly.
+- [x] **Frontend makes WebSocket connection** - The frontend is able to send and receive websocket messages.
+- [x] **Data sent over WebSocket connection** - Data (an updated score) sent over WebSocket connection is readable to the recipient.
+- [x] **WebSocket data displayed** - The WebSocket data is displayed on the score table as the user submits their solution to the puzzle.
+- [x] **Application is fully functional** - There is nothing left that is a mock-up. There is still the solve button so you can solve the game quickly for testing purposes, but everything else is production-ready.
 
 ## Notes:
 [My Notes](notes.md)
