@@ -1,6 +1,6 @@
 import React from 'react';
 import './scores.css'
-import { GameEvent, ScoreClient } from '../play/scoreClient';
+import { GameEvent, ScoreClientInstance } from '../play/scoreClient';
 
 export function Scores(props) {
   const [scores, setScores] = React.useState([]);
@@ -16,14 +16,15 @@ export function Scores(props) {
   }, []);
 
   React.useEffect(() => {
-    ScoreClient.addObserver(handleGameEvent);
+    ScoreClientInstance.addObserver(handleGameEvent);
     return () => {
-      ScoreClient.removeObserver(handleGameEvent);
+      ScoreClientInstance.removeObserver(handleGameEvent);
     };
   });
 
   function handleGameEvent(event) {
-    const time = event.value;
+    const time = event.data;
+    console.log('Event:', event.data);
     for (const [i, score] of scores.entries()) {
       if (score.time < time.time) {
         time.formatted = formatTime(time.time);
