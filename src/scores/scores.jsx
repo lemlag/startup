@@ -12,6 +12,7 @@ export function Scores(props) {
       .then((response) => response.json())
       .then((times) => {
         setScores(times);
+        console.log('Fetched times:', times);
       });
   }, []);
 
@@ -23,28 +24,41 @@ export function Scores(props) {
   });
 
   function handleGameEvent(event) {
-    const time = event.data;
-    console.log('Event:', event.data);
-    for (const [i, score] of scores.entries()) {
-      if (score.time < time.time) {
-        time.formatted = formatTime(time.time);
-        scores[i] = time;
-        scores.splice(i, 0, time);
-        if (scores.length > 10) {
-          scores.pop();
-        }
-        setScores([...scores]);
+    if (event.data === undefined) {
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const text = event.target.result;
+      const parsedData = JSON.parse(text);
+      console.log('Parsed data:', parsedData);
+      handleParsedData(parsedData);
+    };
+
+    function handleParsedData(parsedData) {
+      const time = parsedData.value;
+      console.log('Received time:', time);
+      console.log('Scores:', scores);
+      if (scores.length === 0) {
+        setScores([time]);
         return;
       }
-    }
-  }
 
-  const formatTime = (milliseconds) => {
-    const secs = Math.floor(milliseconds / 1000) % 60;
-    const mins = Math.floor(milliseconds / 60000) % 60;
-    const hours = Math.floor(milliseconds / 360000);
-    return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-  };
+      for (const [i, score] of scores.entries()) {
+        if (score.time < time.time) {
+          scores[i] = time;
+          scores.splice(i, 0, time);
+          if (scores.length > 10) {
+          scores.pop();
+          }
+          setScores([...scores]);
+          return;
+        }
+      }
+    }
+    reader.readAsText(event.data);
+    console.log('Received time:', time);
+  }
 
   const scoreRows = [];
   if(scores.length) {

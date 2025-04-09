@@ -39,14 +39,16 @@ async function addTime(time) {
   return timeCollection.insertOne(time);
 }
 
-function getBestTimes() {
-  const query = { time: { $gt: 0, $lt: 86000000 } };
+async function getBestTimes() {
+  const query = { time: { $gt: 0} };
   const options = {
     sort: { time: 1 },
     limit: 10,
   };
-  const cursor = timeCollection.find(query, options);
-  return cursor.toArray();
+  const cursor = await timeCollection.find(query, options);
+  const array = await cursor.toArray();
+  console.log(array);
+  return array;
 }
 
 function getGame(email) {
