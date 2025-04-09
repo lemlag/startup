@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import './play.css';
-import {scoreClient} from './scoreClient';
+import {ScoreClientInstance} from './scoreClient';
 import { GameEvent } from './scoreClient';
 
 export function Gameboard(props) {
@@ -139,7 +139,7 @@ export function Gameboard(props) {
       body: JSON.stringify(newScore),
     });
 
-    scoreClient.updateScores(userName, GameEvent.Submit, newScore);
+    ScoreClientInstance.updateScores(userName, GameEvent.Submit, newScore);
   }
 
   async function newGame() {
