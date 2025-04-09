@@ -11,11 +11,6 @@ export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
-  const [winner, setWinner] = React.useState(null); // State to track the winner
-
-  const handleWin = (newWinner) => {
-    setWinner(newWinner);
-  };
 
   return (
     <BrowserRouter>
@@ -42,8 +37,8 @@ export default function App() {
               } 
               exact 
             />
-            <Route path='/' element={<Play userName={userName} setWinner={handleWin} />} />
-            <Route path='/scores' element={<Scores winner={winner} setWinner={handleWin}/>} />
+            <Route path='/' element={<Play userName={userName} />} />
+            <Route path='/scores' element={<Scores />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
 
