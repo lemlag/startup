@@ -4,6 +4,7 @@ import { GameEvent, ScoreClient } from '../play/scoreClient';
 
 export function Scores(props) {
   const [scores, setScores] = React.useState([]);
+  const [events, setEvent] = React.useState([]);
   const winner = props.winner;
 
   // Load scores at the beginning only (when it is rendered) - but maybe also load it when someone else wins
@@ -16,15 +17,26 @@ export function Scores(props) {
   }, []);
 
   React.useEffect(() => {
-    fetch('/api/times')
-      .then((response) => response.json())
-      .then((times) => {
-        setScores(times);
-      });
-  }, [winner]);
+    ScoreClient.addObserver(handleGameEvent);
+    return () => {
+      ScoreClient.removeObserver(handleGameEvent);
+    };
+  });
 
-  function updateScores(newScore) {
-    props.setWinner(newScore)
+  function handleGameEvent(event) {
+    const time = event.value;
+    for (const [i, score] of scores.entries()) {
+      if (score.time < time.time) {
+        time.formatted = formatTime(time.time);
+        scores[i] = time;
+        scores.splice(i, 0, time);
+        if (scores.length > 10) {
+          scores.pop();
+        }
+        setScores([...scores]);
+        return;
+      }
+    }
   }
 
   const formatTime = (milliseconds) => {
@@ -33,20 +45,6 @@ export function Scores(props) {
     const hours = Math.floor(milliseconds / 360000);
     return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
-
-  // Fix demonstration for websocket functionality
-  setInterval(() => {
-    const thisTime = Math.floor(Math.random() * 86000000);
-    const newScore = { name: `User-${Math.floor(Math.random() * 100)}`, time: thisTime, formatted: formatTime(thisTime) };
-    fetch('/api/sudoku/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newScore),
-    })
-    updateScores(newScore);
-  }, 10000);
 
   const scoreRows = [];
   if(scores.length) {

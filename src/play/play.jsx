@@ -7,7 +7,7 @@ export function Play(props) {
   
   return (
     <main>
-      <Gameboard userName={props.userName} setWinner={props.setWinner}/>
+      <Gameboard userName={props.userName}/>
     </main>
   );
 }

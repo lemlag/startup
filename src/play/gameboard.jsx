@@ -3,6 +3,8 @@ import React from 'react';
 
 
 import './play.css';
+import {scoreClient} from './scoreClient';
+import { GameEvent } from './scoreClient';
 
 export function Gameboard(props) {
   const userName = props.userName;
