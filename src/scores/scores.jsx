@@ -12,7 +12,6 @@ export function Scores(props) {
       .then((response) => response.json())
       .then((times) => {
         setScores(times);
-        console.log('Fetched times:', times);
       });
   }, []);
 
@@ -31,33 +30,23 @@ export function Scores(props) {
     reader.onload = function(event) {
       const text = event.target.result;
       const parsedData = JSON.parse(text);
-      console.log('Parsed data:', parsedData);
       handleParsedData(parsedData);
     };
 
     function handleParsedData(parsedData) {
       const time = parsedData.value;
-      console.log('Received time:', time);
-      console.log('Scores:', scores);
-      if (scores.length === 0) {
-        setScores([time]);
-        return;
-      }
-
       for (const [i, score] of scores.entries()) {
-        if (score.time < time.time) {
-          scores[i] = time;
+        if (score.time > time.time) {
           scores.splice(i, 0, time);
           if (scores.length > 10) {
           scores.pop();
           }
           setScores([...scores]);
-          return;
+          break;
         }
       }
     }
     reader.readAsText(event.data);
-    console.log('Received time:', time);
   }
 
   const scoreRows = [];
